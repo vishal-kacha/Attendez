@@ -1,0 +1,25 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <h2>Log in</h2>
+  
+  <div class="form-group pb-4">
+    <%= f.label :email, class: "pb-2" %>
+    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "user@example.com" %>
+  </div>
+
+  <div class="form-group pb-4">
+    <%= f.label :password, class: "pb-2" %>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+  </div>
+
+  <div class="form-check pb-2">
+    <%= f.label :remember_me, class: "form-check-label" do %>
+      <%= f.check_box :remember_me, class: "form-check-input" %> Remember Me
+    <% end %>
+  </div>
+
+  <%= f.submit "Log in", class: "btn btn-primary" %>
+
+<% end %>
+
+<%= render "admins/shared/links" %>

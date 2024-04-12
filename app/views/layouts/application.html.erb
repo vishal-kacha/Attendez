@@ -6,11 +6,47 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-body-tertiary">
+
+    <div class="bg-black text-white">
+      <nav class="navbar navbar-expand-lg container-xxl bd-navbar flex-wrap flex-lg-nowrap pt-3 pb-3">
+        <div class="container-fluid">
+          <%= link_to "Attendez", root_path, class: "navbar-brand fs-4 text-white" %>
+            <ul class="nav navbar-nav">
+              <li class="nav-item">
+                <% if student_signed_in? %>
+                  <span><%= current_student.email %></span>
+                  <%= link_to t('navigation.sign_out'), destroy_student_session_path, data: { "turbo-method": :delete }, class: "btn btn-danger ml-3" %>
+                <% elsif teacher_signed_in? %>
+                  <span><%= current_teacher.email %></span>
+                  <%= link_to t('navigation.sign_out'), destroy_teacher_session_path, data: { "turbo-method": :delete }, class: "btn btn-danger ml-3" %>
+                <% elsif admin_signed_in? %>
+                  <span><%= current_admin.email %></span>
+                  <%= link_to t('navigation.sign_out'), destroy_admin_session_path, data: { "turbo-method": :delete }, class: "btn btn-danger ml-3" %>
+                <% end %>
+              </li>
+            </ul>
+        </div>
+      </nav>
+    </div>
+  
+      <% flash.each do |name, message| %>
+        <% if name == 'alert' %>
+          <%= content_tag(:div, message, class: "alert alert-danger #{name}") %>
+        <% else %>
+          <%= content_tag(:div, message, class: "alert alert-info #{name}") %>
+        <% end %>
+      <% end %>
+
+      <div class="container mt-5">
+          <%= yield %>
+      </div>  
   </body>
 </html>
