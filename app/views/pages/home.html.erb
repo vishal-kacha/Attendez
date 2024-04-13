@@ -21,6 +21,7 @@
       <% @attendance_summary.keys.sort.each do |subject_name| %>
           <% summary = @attendance_summary[subject_name] %>
             <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
+              <%= link_to subject_name.capitalize, attendance_by_subject_path(subject_name.parameterize.capitalize) %>
               <%= "#{subject_name}" %>
               <span class="badge text-black fs-8">
                 <span class="m-2 p-4 fs-6"><%= "#{summary[:present]}" %></span> <span class="fs-6"> / </span> <span class="m-2 p-4 fs-6"><%= "#{summary[:total]}" %></span>

@@ -17,4 +17,14 @@ class PagesController < ApplicationController
       end
     end
   end
+
+  def attendance_by_subject
+    if current_student
+      student = Student.find(current_student.id)
+      subject_name = params[:subject_name]
+
+      # Fetch all attendance records for the current student and selected subject
+      @attendances = student.attendances.where(subject_name: subject_name)
+    end
+  end
 end

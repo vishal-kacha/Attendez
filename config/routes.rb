@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     sessions: "admins/sessions",
     registrations: "admins/registrations"
   }
+
   root 'pages#home'
+
+  get '/:subject_name', to: 'pages#attendance_by_subject', as: 'attendance_by_subject'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
