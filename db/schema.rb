@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_13_080545) do
     t.integer "subject_id", null: false
     t.integer "student_id", null: false
     t.boolean "status"
+    t.string "subject_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_attendances_on_student_id"

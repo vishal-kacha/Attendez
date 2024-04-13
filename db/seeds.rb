@@ -44,17 +44,17 @@ students_data.each do |student_attrs|
   Student.create!(student_attrs)
 end
 
-Attendance.create(subject_id: 1, student_id: 1, status: true)
-Attendance.create(subject_id: 2, student_id: 1, status: true)
+Attendance.create(subject_id: 1, subject_name: 'Java', student_id: 1, status: true)
+Attendance.create(subject_id: 2, subject_name: 'R', student_id: 1, status: true)
 
-Attendance.create(subject_id: 1, student_id: 2, status: true)
-Attendance.create(subject_id: 2, student_id: 2, status: true)
+Attendance.create(subject_id: 1, subject_name: 'Java', student_id: 2, status: true)
+Attendance.create(subject_id: 2, subject_name: 'R', student_id: 2, status: true)
 
-Attendance.create(subject_id: 1, student_id: 3, status: true)
-Attendance.create(subject_id: 2, student_id: 3, status: true)
+Attendance.create(subject_id: 1, subject_name: 'Java',  student_id: 3, status: true)
+Attendance.create(subject_id: 2, subject_name: 'R',  student_id: 3, status: true)
 
-Attendance.create(subject_id: 1, student_id: 4, status: true)
-Attendance.create(subject_id: 2, student_id: 4, status: true)
+Attendance.create(subject_id: 1, subject_name: 'Java',  student_id: 4, status: true)
+Attendance.create(subject_id: 2, subject_name: 'R',  student_id: 4, status: true)
 
-Attendance.create(subject_id: 1, student_id: 5, status: true)
-Attendance.create(subject_id: 2, student_id: 5, status: true)
+Attendance.create(subject_id: 1, subject_name: 'Java',  student_id: 5, status: true)
+Attendance.create(subject_id: 2, subject_name: 'R',  student_id: 5, status: true)
