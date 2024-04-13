@@ -15,6 +15,14 @@
 
   <body class="bg-body-tertiary">
 
+    <% flash.each do |name, message| %>
+      <% if name == 'alert' %>
+        <%= content_tag(:div, message, class: "alert alert-danger #{name} m-0 text-center") %>
+      <% else %>
+        <%= content_tag(:div, message, class: "alert alert-info #{name} m-0 text-center") %>
+      <% end %>
+    <% end %>
+
     <div class="bg-black text-white">
       <nav class="navbar navbar-expand-lg container-xxl bd-navbar flex-wrap flex-lg-nowrap pt-3 pb-3">
         <div class="container-fluid">
@@ -37,13 +45,6 @@
       </nav>
     </div>
   
-      <% flash.each do |name, message| %>
-        <% if name == 'alert' %>
-          <%= content_tag(:div, message, class: "alert alert-danger #{name}") %>
-        <% else %>
-          <%= content_tag(:div, message, class: "alert alert-info #{name}") %>
-        <% end %>
-      <% end %>
 
       <div class="container mt-5">
           <%= yield %>

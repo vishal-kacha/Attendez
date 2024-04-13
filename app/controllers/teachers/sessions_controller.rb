@@ -7,14 +7,22 @@ class Teachers::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+   def new
+    if current_admin
+      redirect_to root_path, alert: "You are already signed in."
+    else
+       super
+    end
+   end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+   def create
+    if current_admin
+      redirect_to root_path, alert: "You are already signed in."
+    else
+       super
+    end
+   end
 
   # DELETE /resource/sign_out
   # def destroy
