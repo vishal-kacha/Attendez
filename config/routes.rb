@@ -16,7 +16,10 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  get '/:subject_name', to: 'pages#attendance_by_subject', as: 'attendance_by_subject'
+  get 'student/:subject_name', to: 'pages#attendance_by_subject', as: 'attendance_by_subject'
+
+  get 'attendance/new'
+  post 'attendance/new', to: "attendance#post"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

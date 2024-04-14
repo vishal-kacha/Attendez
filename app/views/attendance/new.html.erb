@@ -1,0 +1,18 @@
+
+<h3>Select students</h3>
+
+<%= form_with(url: attendance_new_path, method: :post) do |form| %>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <% if @student.present? %>
+      <% @student.each do |student_id| %>
+        <%= form.check_box student_id, { class: "btn-check", autocomplete: "off" } %>
+        <%= form.label student_id, class: "btn btn-outline-dark ps-4 pe-4 mb-4" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <br>
+
+  <%= form.submit "Add Attendance", class: "btn btn-dark" %>
+<% end %>
+

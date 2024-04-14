@@ -1,36 +1,47 @@
 
 <% if current_admin || current_student || current_teacher %>
 
-  <% if @attendance_summary.present? %>
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-action list-group-item-info d-flex justify-content-between align-items-center fs-4">
-        Subjects
-        <span class="badge text-black">
-          <span class="m-4 p-6 fs-6">
-            Present 
+  <% if current_student %>
+    <% if @attendance_summary.present? %>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action list-group-item-info d-flex justify-content-between align-items-center fs-4">
+          Subjects
+          <span class="badge text-black">
+            <span class="m-4 p-6 fs-6">
+              Present 
+            </span>
+            <span class="fs-6">
+              / 
+            </span>
+            <span class="m-4 p-6 fs-6">
+              Total
+            </span>
           </span>
-          <span class="fs-6">
-            / 
-          </span>
-          <span class="m-4 p-6 fs-6">
-            Total
-          </span>
-        </span>
-      </li>
+        </li>
 
-      <% @attendance_summary.keys.sort.each do |subject_name| %>
-          <% summary = @attendance_summary[subject_name] %>
-            <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
-              <%= link_to subject_name.capitalize, attendance_by_subject_path(subject_name.parameterize.capitalize) %>
-              <%= "#{subject_name}" %>
-              <span class="badge text-black fs-8">
-                <span class="m-2 p-4 fs-6"><%= "#{summary[:present]}" %></span> <span class="fs-6"> / </span> <span class="m-2 p-4 fs-6"><%= "#{summary[:total]}" %></span>
-              </span>
-            </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>No attendance data available.</p>
+        <% @attendance_summary.keys.sort.each do |subject_name| %>
+            <% summary = @attendance_summary[subject_name] %>
+              <li class="list-group-item d-flex justify-content-between align-items-center fs-5">
+                <%= link_to subject_name.capitalize, attendance_by_subject_path(subject_name.parameterize.capitalize) %>
+                <%= "#{subject_name}" %>
+                <span class="badge text-black fs-8">
+                  <span class="m-2 p-4 fs-6"><%= "#{summary[:present]}" %></span> <span class="fs-6"> / </span> <span class="m-2 p-4 fs-6"><%= "#{summary[:total]}" %></span>
+                </span>
+              </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No attendance data available.</p>
+    <% end %>
+  <% end %>
+
+  <% if current_teacher %>
+    <span class="fs-4"><%= current_teacher.subject.subject_name %></span>
+    <%= link_to  "New Attendance", attendance_new_path, class: "btn btn-primary" %>
+  <% end %>
+
+  <% if current_admin %>
+    <h1>Work in progress..!</h1>
   <% end %>
 
 <% else %>

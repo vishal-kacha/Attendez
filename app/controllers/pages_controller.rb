@@ -25,6 +25,10 @@ class PagesController < ApplicationController
 
       # Fetch all attendance records for the current student and selected subject
       @attendances = student.attendances.where(subject_name: subject_name)
+    elsif current_teacher
+      redirect_to root_path, alert: "Not available." and return 
+    elsif current_admin
+      redirect_to root_path, alert: "Not available." and return 
     end
   end
 end
