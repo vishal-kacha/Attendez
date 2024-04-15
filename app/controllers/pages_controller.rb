@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
- 
+
   def home
     if current_student
       student = Student.find(current_student.id)
@@ -22,9 +22,11 @@ class PagesController < ApplicationController
     if current_student
       student = Student.find(current_student.id)
       subject_name = params[:subject_name]
-
-      # Fetch all attendance records for the current student and selected subject
-      @attendances = student.attendances.where(subject_name: subject_name)
+      if student.subjects.exists?(subject_name: subject_name)
+        @attendances = student.attendances.where(subject_name: subject_name)
+      else
+        redirect_to root_path, alert: "Not available." and return 
+      end
     elsif current_teacher
       redirect_to root_path, alert: "Not available." and return 
     elsif current_admin
