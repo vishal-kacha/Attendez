@@ -11,9 +11,10 @@ class Admins::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+    redirect_to madmin_root_path
+  end
 
   # DELETE /resource/sign_out
   # def destroy

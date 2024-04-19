@@ -9,7 +9,7 @@ module Accessible
   def check_user
     if current_admin
       flash.clear
-      redirect_to root_path and return 
+      redirect_to madmin_root_path
     elsif current_student
       flash.clear
       redirect_to root_path and return 

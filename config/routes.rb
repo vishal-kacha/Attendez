@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  draw :madmin
   devise_for :students, path: 'students', controllers: {
     sessions: 'students/sessions',
     registrations: 'students/registrations'

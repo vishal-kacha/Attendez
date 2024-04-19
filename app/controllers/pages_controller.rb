@@ -16,6 +16,8 @@ class PagesController < ApplicationController
       end
     elsif current_teacher
       @attendance_details = current_teacher.subject.attendances.group(:created_date, :created_time)
+    elsif current_admin
+      redirect_to madmin_root_path
     end
   end
 

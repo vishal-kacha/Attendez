@@ -67,3 +67,7 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem "sass-rails"
+
+gem "madmin", "~> 1.2"
