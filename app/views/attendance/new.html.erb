@@ -2,11 +2,22 @@
 <h3>Select students</h3>
 
 <%= form_with(url: attendance_new_path, method: :post) do |form| %>
+
+  <div class="field">
+    <%= form.label :date, "Date" %>
+    <%= form.date_field :date, class: "form-control", value: Date.today  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time, "Time" %>
+    <%= form.time_field :time, class: "form-control", value: Time.now.strftime("%H:%M")  %>
+  </div>
+
   <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
     <% if @student.present? %>
       <% @student.each do |student_id| %>
         <%= form.check_box student_id, { class: "btn-check", autocomplete: "off" } %>
-        <%= form.label student_id, class: "btn btn-outline-dark ps-4 pe-4 mb-4" %>
+        <%= form.label student_id, class: "btn btn-outline-dark ps-4 pe-4 mb-4 mt-4" %>
       <% end %>
     <% end %>
   </div>

@@ -24,7 +24,9 @@
                 <%= link_to attendance_by_subject_path(subject_name.parameterize.capitalize), class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center fs-5" do %>
                   <%= "#{subject_name}" %>
                   <span class="badge text-black fs-8">
-                    <span class="m-2 p-4 fs-6"><%= "#{summary[:present]}" %></span> <span class="fs-6"> / </span> <span class="m-2 p-4 fs-6"><%= "#{summary[:total]}" %></span>
+                    <span class="m-2 p-4 fs-6"><%= "#{summary[:present]}" %></span> 
+                    <span class="fs-6"> / </span> 
+                    <span class="m-2 p-4 fs-6"><%= "#{summary[:total]}" %></span>
                   </span>
                 <% end %>
         <% end %>
@@ -35,8 +37,31 @@
   <% end %>
 
   <% if current_teacher %>
-    <span class="fs-4"><%= current_teacher.subject.subject_name %></span>
-    <%= link_to  "New Attendance", attendance_new_path, class: "btn btn-primary" %>
+    <div class="d-flex justify-content-between align-items-center">
+      <span class="fs-4"><%= current_teacher.subject.subject_name %> attendance details</span>
+      <%= link_to  "New Attendance", attendance_new_path, class: "btn btn-primary" %>
+    </div>
+
+    <table class="table mt-4 table-striped-columns text-center">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Created date</th>
+          <th scope="col">last Updated date</th>
+          <th scope="col">Update Attendance</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @attendance_details.each do |details| %>
+            <tr>
+              <td><%= details.created_date %></td>
+              <td><%= details.updated_date %></td>
+              <td>
+                <%= link_to "Edit",attendance_edit_path(date: details.created_date, time: details.created_time ) %>
+              </td>
+            </tr>
+      <% end %>
+      </tbody>
+    </table>
   <% end %>
 
   <% if current_admin %>

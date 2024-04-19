@@ -1,0 +1,20 @@
+<h1> Edit page</h1>
+<p><%= @date %></p>
+<p><%= @time %></p>
+
+<%= form_with(url: attendance_edit_post_path, method: :post) do |form| %>
+
+  <%= form.hidden_field :attendance_date, value: Date.today %>
+  <%= form.hidden_field :attendance_time, value: Time.now.strftime("%H:%M") %>
+
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+      <% @attendances.each do |item| %>
+        <%= form.check_box item.student_id, { class: "btn-check", autocomplete: "off", checked: item.status } %>
+        <%= form.label item.student_id, class: "btn btn-outline-dark ps-4 pe-4 mb-4 mt-4" %>
+      <% end %>
+  </div>
+
+  <br>
+
+  <%= form.submit "Edit Attendance", class: "btn btn-dark" %>
+<% end %>

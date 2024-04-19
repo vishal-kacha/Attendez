@@ -28,6 +28,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_13_080545) do
     t.integer "student_id", null: false
     t.boolean "status"
     t.string "subject_name", null: false
+    t.string "created_date", null: false
+    t.string "updated_date", null: false
+    t.string "created_time", null: false
+    t.string "updated_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_attendances_on_student_id"

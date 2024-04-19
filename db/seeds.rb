@@ -18,43 +18,42 @@ branch = Branch.create!(name: 'cs')
 
 # Create subjects (assuming 7 subjects)
 subjects_data = [
-  { subject_name: 'Java', branch_id: 1},
-  { subject_name: 'R', branch_id:  1},
+  { subject_name: 'Java', branch_id: 1 },
+  { subject_name: 'R', branch_id: 1 }
 ]
 
 subjects_data.each do |subject_attrs|
   Subject.create!(subject_attrs)
 end
 
-
 # Create teachers (assuming 2 teachers)
-teacher1 = Teacher.create!(email: 'teacher1@gmail.com', password: "teacher", branch_id: 1, subject_id: 1)
-teacher2 = Teacher.create!(email: 'teacher2@gmail.com', password: "teacher", branch_id: 1, subject_id: 2)
+teacher1 = Teacher.create!(email: 'teacher1@gmail.com', password: 'teacher', branch_id: 1, subject_id: 1)
+teacher2 = Teacher.create!(email: 'teacher2@gmail.com', password: 'teacher', branch_id: 1, subject_id: 2)
 
 # Create students (assuming 5 students)
 students_data = [
-  { email: 'student1@example.com', password: "student", branch_id: 1 },
-  { email: 'student2@example.com', password: "student", branch_id: 1 },
-  { email: 'student3@example.com', password: "student", branch_id: 1 },
-  { email: 'student4@example.com', password: "student", branch_id: 1 },
-  { email: 'student5@example.com', password: "student", branch_id: 1 }
+  { email: 'student1@example.com', password: 'student', branch_id: 1 },
+  { email: 'student2@example.com', password: 'student', branch_id: 1 },
+  { email: 'student3@example.com', password: 'student', branch_id: 1 },
+  { email: 'student4@example.com', password: 'student', branch_id: 1 },
+  { email: 'student5@example.com', password: 'student', branch_id: 1 }
 ]
 
 students_data.each do |student_attrs|
   Student.create!(student_attrs)
 end
 
-Attendance.create(subject_id: 1, subject_name: 'Java', student_id: 1, status: true)
-Attendance.create(subject_id: 2, subject_name: 'R', student_id: 1, status: true)
+# Attendance.create(subject_id: 1, subject_name: 'Java', student_id: 1, status: true)
+# Attendance.create(subject_id: 2, subject_name: 'R', student_id: 1, status: true)
 
-Attendance.create(subject_id: 1, subject_name: 'Java', student_id: 2, status: true)
-Attendance.create(subject_id: 2, subject_name: 'R', student_id: 2, status: true)
+# Attendance.create(subject_id: 1, subject_name: 'Java', student_id: 2, status: true)
+# Attendance.create(subject_id: 2, subject_name: 'R', student_id: 2, status: true)
 
-Attendance.create(subject_id: 1, subject_name: 'Java',  student_id: 3, status: true)
-Attendance.create(subject_id: 2, subject_name: 'R',  student_id: 3, status: true)
+# Attendance.create(subject_id: 1, subject_name: 'Java', student_id: 3, status: true)
+# Attendance.create(subject_id: 2, subject_name: 'R', student_id: 3, status: true)
 
-Attendance.create(subject_id: 1, subject_name: 'Java',  student_id: 4, status: true)
-Attendance.create(subject_id: 2, subject_name: 'R',  student_id: 4, status: true)
+# Attendance.create(subject_id: 1, subject_name: 'Java', student_id: 4, status: true)
+# Attendance.create(subject_id: 2, subject_name: 'R', student_id: 4, status: true)
 
-Attendance.create(subject_id: 1, subject_name: 'Java',  student_id: 5, status: true)
-Attendance.create(subject_id: 2, subject_name: 'R',  student_id: 5, status: true)
+# Attendance.create(subject_id: 1, subject_name: 'Java', student_id: 5, status: true)
+# Attendance.create(subject_id: 2, subject_name: 'R', student_id: 5, status: true)
